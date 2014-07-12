@@ -3,24 +3,18 @@ package pl.edu.misztal.imageprocessing.image;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import pl.edu.misztal.imageprocessing.image.color.MColor;
+import pl.edu.misztal.imageprocessing.image.utils.IOHelper;
 
 /**
  *
  * @author Krzysztof
  */
-public class Image {
+public class Image extends AbstractImage {
 
     // Image
     protected BufferedImage image;
-
-    // Dimension
-    protected int width;
-    protected int height;
-
-    protected String descrition = "";
 
     /**
      * default type is RGB
@@ -55,6 +49,10 @@ public class Image {
         height = img.getHeight();
     }
 
+    public Image(String filename) {
+        this(IOHelper.load(filename));
+    }
+
     public void fillWithColor(Color c) {
         Graphics2D g = image.createGraphics();
         g.setColor(c);
@@ -73,15 +71,12 @@ public class Image {
         return image.getType();
     }
 
-    public void setDescrition(String descrition) {
-        this.descrition = descrition;
-    }
-
-    public String getDescrition() {
-        return descrition;
-    }
-
-    protected Image copy() {
+    /**
+     *
+     * @return
+     */
+    @Override
+    public Image copy() {
         return new Image(copyImage(image));
     }
 
@@ -141,28 +136,21 @@ public class Image {
         }
     }
 
-    public final int getHeight() {
-        return height;
-    }
-
-    public final int getWidth() {
-        return width;
-    }
-
     public BufferedImage getBufferedImage() {
         return image;
     }
-    
+
     public BufferedImage getCopyOfBufferedImage() {
         return copyImage(image);
     }
-
-    private boolean checkX(final int x) {
-        return (x >= 0 && x <= width);
+    
+    public void save(String filemane){
+        IOHelper.save(filemane, getBufferedImage());
     }
 
-    private boolean checkY(final int y) {
-        return (y >= 0 && y <= height);
+    public void setBufferedImage(BufferedImage im) {
+        if(width != im.getWidth() || height != im.getHeight())
+            throw new UnsupportedOperationException("Not compatible images");
+        image = im;
     }
-
 }

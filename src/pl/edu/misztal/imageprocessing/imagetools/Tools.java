@@ -10,6 +10,7 @@ import pl.edu.misztal.imageprocessing.image.Image;
  * @author Krzysztof
  */
 public class Tools {
+
     /**
      * Resize the image passing the new height and width
      *
@@ -25,5 +26,18 @@ public class Tools {
         g2d.drawImage(image.getBufferedImage(), 0, 0, width, height, null);
         g2d.dispose();
         return new Image(buf);
+    }
+
+    /**
+     * crop the image
+     * @param image
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @return 
+     */
+    public static Image crop(Image image, int x, int y, int w, int h) {
+        return (new Image(image.getBufferedImage().getSubimage(x, y, w, h)));
     }
 }
