@@ -82,7 +82,11 @@ public abstract class Plugin {
     }
 
     
-    protected Object getAttribute(String key){
+    public Object getAttribute(String key){
         return attributes.get(key);
     }
+    
+    public void setAttribute(String key, Object value){
+        attributes.set(key, value);
+    } 
 }

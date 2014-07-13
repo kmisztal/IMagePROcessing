@@ -9,12 +9,12 @@ import pl.edu.misztal.imageprocessing.image.utils.Attributes;
 import pl.edu.misztal.imageprocessing.image.utils.Mask;
 
 /**
- *
+ * Lookup Table filter with different table for each channel
  * @author Krzysztof
  */
-public abstract class LookUpTablePlugin extends Plugin {
+public abstract class LookUp3DTablePlugin extends Plugin {
 
-    protected short[] LUT;
+    protected short[][] LUT;
 
     protected abstract void createLUT();
 

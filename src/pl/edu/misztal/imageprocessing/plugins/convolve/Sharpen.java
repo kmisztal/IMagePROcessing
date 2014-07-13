@@ -26,6 +26,7 @@ public class Sharpen extends ConvolutionPlugin {
 
     @Override
     protected void setKernelSize() {
+        width = height = 3;
     }
 
 }

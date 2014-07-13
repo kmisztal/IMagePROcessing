@@ -19,6 +19,7 @@ public class Emboss extends ConvolutionPlugin {
 
     @Override
     protected void setKernelSize() {
+        width = height = 3;
     }
 
 }
