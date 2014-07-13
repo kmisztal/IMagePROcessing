@@ -149,8 +149,8 @@ public class Image extends AbstractImage {
     }
 
     public void setBufferedImage(BufferedImage im) {
-        if(width != im.getWidth() || height != im.getHeight())
-            throw new UnsupportedOperationException("Not compatible images");
         image = im;
+        width = im.getWidth();
+        height = im.getHeight();
     }
 }
