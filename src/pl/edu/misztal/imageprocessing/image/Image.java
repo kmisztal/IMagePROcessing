@@ -8,7 +8,7 @@ import pl.edu.misztal.imageprocessing.image.color.MColor;
 import pl.edu.misztal.imageprocessing.image.utils.IOHelper;
 
 /**
- *
+ * <img src="doc-files/image.jpg">
  * @author Krzysztof
  */
 public class Image extends AbstractImage {
