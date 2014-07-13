@@ -1,4 +1,4 @@
-package pl.edu.misztal.imageprocessing.plugins.threshold;
+package pl.edu.misztal.imageprocessing.plugins.color;
 
 import pl.edu.misztal.imageprocessing.plugins.util.LookUpTablePlugin;
 

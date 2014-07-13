@@ -3,7 +3,7 @@ package pl.edu.misztal.imageprocessing.plugins.convolve;
 import pl.edu.misztal.imageprocessing.plugins.util.ConvolutionPlugin;
 
 /**
- *
+ * Blurring is done for example by taking the average of the current pixel and it's 8 neighbors.
  * @author Krzysztof
  */
 public class Blur extends ConvolutionPlugin {
