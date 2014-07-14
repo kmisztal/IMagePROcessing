@@ -1,7 +1,6 @@
 package pl.edu.misztal.imageprocessing.test;
 
 import pl.edu.misztal.imageprocessing.image.executors.Executor;
-import pl.edu.misztal.imageprocessing.image.executors.QuickExecutor;
 import pl.edu.misztal.imageprocessing.image.executors.StepHandlerExecutor;
 import pl.edu.misztal.imageprocessing.plugins.color.Invert;
 import pl.edu.misztal.imageprocessing.plugins.convolve.Blur;
@@ -10,11 +9,11 @@ import pl.edu.misztal.imageprocessing.plugins.convolve.Blur;
  *
  * @author Krzysztof
  */
-public class ExecutorTest {
+public class StepHandlerExecutorTest {
     public static void main(String[] args) {
         String filename = "./res/tucano.jpg";
         
-        Executor exec = new QuickExecutor(filename);        
+        Executor exec = new StepHandlerExecutor(filename);
         
         exec.add(new Invert());
         exec.add(new Invert());

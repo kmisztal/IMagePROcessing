@@ -1,13 +1,13 @@
 package pl.edu.misztal.imageprocessing.plugins.color;
 
 import pl.edu.misztal.imageprocessing.image.color.MColor;
-import pl.edu.misztal.imageprocessing.plugins.util.LookUp3DTablePlugin;
+import pl.edu.misztal.imageprocessing.plugins.util.Lookup3DTablePlugin;
 
 /**
  *
  * @author Krzysztof
  */
-public class Sepia extends LookUp3DTablePlugin {
+public class Sepia extends Lookup3DTablePlugin {
     private int W;
 
     @Override

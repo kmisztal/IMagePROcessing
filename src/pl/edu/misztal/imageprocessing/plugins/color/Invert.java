@@ -1,6 +1,6 @@
 package pl.edu.misztal.imageprocessing.plugins.color;
 
-import pl.edu.misztal.imageprocessing.plugins.util.LookUpTablePlugin;
+import pl.edu.misztal.imageprocessing.plugins.util.LookupTablePlugin;
 
 /**
  *
@@ -26,7 +26,7 @@ import pl.edu.misztal.imageprocessing.plugins.util.LookUpTablePlugin;
  *
  * @author Krzysztof
  */
-public class Invert extends LookUpTablePlugin {
+public class Invert extends LookupTablePlugin {
 
     @Override
     protected void createLUT() {

@@ -1,12 +1,12 @@
 package pl.edu.misztal.imageprocessing.plugins.threshold;
 
-import pl.edu.misztal.imageprocessing.plugins.util.LookUpTablePlugin;
+import pl.edu.misztal.imageprocessing.plugins.util.LookupTablePlugin;
 
 /**
  *
  * @author Krzysztof
  */
-public class Threshold extends LookUpTablePlugin {
+public class Threshold extends LookupTablePlugin {
 
     private int threshold = 127;
 

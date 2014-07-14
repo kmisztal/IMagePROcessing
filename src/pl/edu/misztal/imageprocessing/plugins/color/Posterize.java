@@ -1,12 +1,12 @@
 package pl.edu.misztal.imageprocessing.plugins.color;
 
-import pl.edu.misztal.imageprocessing.plugins.util.LookUpTablePlugin;
+import pl.edu.misztal.imageprocessing.plugins.util.LookupTablePlugin;
 
 /**
  *
  * @author Krzysztof
  */
-public class Posterize extends LookUpTablePlugin {
+public class Posterize extends LookupTablePlugin {
 
     @Override
     protected void createLUT() {

@@ -89,4 +89,9 @@ public abstract class Plugin {
     public void setAttribute(String key, Object value){
         attributes.set(key, value);
     } 
+
+    public String getName() {
+        String[] name = this.getClass().getName().split("\\.");
+        return name[name.length - 1];
+    }
 }
