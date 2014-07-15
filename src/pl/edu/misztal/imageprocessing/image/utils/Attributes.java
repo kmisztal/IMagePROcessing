@@ -1,6 +1,7 @@
 package pl.edu.misztal.imageprocessing.image.utils;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 /**
@@ -105,4 +106,28 @@ public class Attributes {
         }
         return attrs;
     }
+
+    public boolean isEmpty() {
+        return hashAttributes.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        Iterator<String> keySetIterator = hashAttributes.keySet().iterator();
+
+        while (keySetIterator.hasNext()) {
+            String key = keySetIterator.next();
+            ret += key + " : ";
+            Object o = hashAttributes.get(key);
+            if(o instanceof Number){
+                ret += o + "\n";
+            }else{
+                throw new RuntimeException("Not supported type of attribute");
+            }
+        }
+
+        return ret;
+    }
+
 }

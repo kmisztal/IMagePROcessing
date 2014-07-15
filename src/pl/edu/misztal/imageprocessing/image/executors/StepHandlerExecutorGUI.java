@@ -16,12 +16,14 @@ import javax.imageio.ImageIO;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,6 +40,8 @@ public final class StepHandlerExecutorGUI extends JFrame {
     private JPanel gui;
     FilenameFilter fileNameFilter;
     DefaultListModel model;
+    final JList imageList;
+    final JEditorPane info;
 
     StepHandlerExecutorGUI() {
         super("Step Handler Executor");
@@ -50,15 +54,17 @@ public final class StepHandlerExecutorGUI extends JFrame {
         imageViewContainer.add(imageView);
 
         model = new DefaultListModel();
-        final JList imageList = new JList(model);
+        imageList = new JList(model);
         imageList.setCellRenderer(new IconCellRenderer());
         ListSelectionListener listener = new ListSelectionListener() {
 
             @Override
             public void valueChanged(ListSelectionEvent lse) {
-                Object o = imageList.getSelectedValue();
-                if (o instanceof Pair) {
-                    imageView.setIcon(new ImageIcon((BufferedImage) ((Image) ((Pair) o).getKey()).getBufferedImage()));
+                
+                if (imageList.getSelectedValue() instanceof Pair) {
+                    Pair<Image,Plugin> o = (Pair<Image,Plugin>) imageList.getSelectedValue();
+                    imageView.setIcon(new ImageIcon(o.getKey().getBufferedImage()));
+                    info.setText(o.getValue().getInfo().replaceAll("\n", "<br/>"));
                 }
             }
 
@@ -72,13 +78,23 @@ public final class StepHandlerExecutorGUI extends JFrame {
             }
         };
 
+        info = new JEditorPane();
+        info.setContentType("text/html");
+        info.setEditable(false);
+
         gui.add(new JSplitPane(
                 JSplitPane.HORIZONTAL_SPLIT,
-                new JScrollPane(
-                        imageList,
-                        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
+                new JSplitPane(
+                        JSplitPane.VERTICAL_SPLIT,
+                        info,
+                        new JScrollPane(
+                                imageList,
+                                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER)
+                ),
                 new JScrollPane(imageViewContainer)));
+        info.setMaximumSize(new Dimension(Short.MAX_VALUE, 200));
+        info.setMinimumSize(new Dimension(10, 200));
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(getGui());
@@ -103,6 +119,7 @@ public final class StepHandlerExecutorGUI extends JFrame {
 
     public void addImage(Image img, Plugin plugin) {
         model.addElement(new Pair<>(img, plugin));
+        imageList.setSelectedIndex(imageList.getModel().getSize() - 1);
     }
 
 }
@@ -131,14 +148,23 @@ class IconCellRenderer extends DefaultListCellRenderer {
             boolean isSelected,
             boolean cellHasFocus) {
         Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
         if (c instanceof JLabel && value instanceof Pair) {
             Pair<Image, Plugin> pair = (Pair) value;
             Image i = (Image) pair.getKey();
             Plugin plugin = (Plugin) pair.getValue();
 
+//            if(isSelected){
+//                System.out.println("Selected " + plugin.getName());
+//            }
             JLabel l = (JLabel) c;
             l.setText(plugin.getName());
             l.setIcon(new ImageIcon(icon));
+
+            final String html
+                    = "<html><body>"
+                    + "<p>Look Ma, no hands!";
+            l.setToolTipText(html);
 
             Graphics2D g = icon.createGraphics();
             g.setColor(Color.white);

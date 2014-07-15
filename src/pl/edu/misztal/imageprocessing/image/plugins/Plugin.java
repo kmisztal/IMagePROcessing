@@ -94,4 +94,13 @@ public abstract class Plugin {
         String[] name = this.getClass().getName().split("\\.");
         return name[name.length - 1];
     }
+    
+    public String getInfo(){
+        String ret  = "<html><body><strong>Plugin:<br/></strong> " + getName() + "<br/>";
+        if(!attributes.isEmpty()){
+            ret += "<strong>Attributes:</strong><br/>";
+            ret += attributes.toString();
+        }
+        return ret;
+    }
 }

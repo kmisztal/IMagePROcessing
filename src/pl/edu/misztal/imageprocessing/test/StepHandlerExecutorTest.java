@@ -11,7 +11,7 @@ import pl.edu.misztal.imageprocessing.plugins.convolve.Blur;
  */
 public class StepHandlerExecutorTest {
     public static void main(String[] args) {
-        String filename = "./res/tucano.jpg";
+        String filename = "./res/senna.jpg";
         
         Executor exec = new StepHandlerExecutor(filename);
         

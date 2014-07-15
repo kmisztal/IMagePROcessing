@@ -20,6 +20,7 @@ public class StepHandlerExecutor extends Executor{
             imageList.addImage(currentImage.copy(), p);            
         });
         
+        
     }
     
 }
