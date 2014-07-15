@@ -1,7 +1,7 @@
 package pl.edu.misztal.imageprocessing.test;
 
 import pl.edu.misztal.imageprocessing.image.executors.Executor;
-import pl.edu.misztal.imageprocessing.image.executors.StepHandlerExecutor;
+import pl.edu.misztal.imageprocessing.image.executors.gui.StepHandlerExecutor;
 import pl.edu.misztal.imageprocessing.plugins.color.Invert;
 import pl.edu.misztal.imageprocessing.plugins.convolve.Blur;
 

@@ -13,17 +13,26 @@ public abstract class Executor {
     protected final Image originalImage;
     protected Image currentImage;
 
-    ArrayList<Plugin> plugins = new ArrayList<>();
+    protected ArrayList<Plugin> plugins = new ArrayList<>();
 
     public Executor(String filename) {
         originalImage = new Image(filename);
         currentImage = originalImage.copy();
     }
 
+    /**
+     * add plugin 
+     * @param plugin 
+     */
     public void add(Plugin plugin) {
         plugins.add(plugin);
     }
 
+    /**
+     * methods to add new plugin with its attributes
+     * @param plugin - Plugin class
+     * @param params - attributes of given plugin
+     */
     public void add(Plugin plugin, Object... params) {
         if (params.length % 2 != 0) {
             throw new RuntimeException("Wrong plugin initialization");
@@ -36,16 +45,36 @@ public abstract class Executor {
 
     public abstract void execute();
 
+    /**
+     * invoke the save methods from Image class
+     * @param filename - destination file name
+     */
     public void save(String filename) {
         currentImage.save(filename);
     }
 
+    /**
+     * 
+     * @return original image
+     */
     public Image getOriginalImage() {
         return originalImage;
     }
 
+    /**
+     * 
+     * @return result image after applying all plugins
+     */
     public Image getResultImage() {
         return currentImage;
+    }
+
+    /**
+     * 
+     * @return - number of plugins to apply
+     */
+    public int getLengthOfTask() {
+        return plugins.size();
     }
 
 }

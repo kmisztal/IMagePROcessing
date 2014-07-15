@@ -1,0 +1,17 @@
+pl.edu.misztal.imageprocessing.image
+pl.edu.misztal.imageprocessing.image.color
+pl.edu.misztal.imageprocessing.image.executors
+pl.edu.misztal.imageprocessing.image.executors.gui
+pl.edu.misztal.imageprocessing.image.executors.gui.helpers
+pl.edu.misztal.imageprocessing.image.executors.progressbar
+pl.edu.misztal.imageprocessing.image.executors.quick
+pl.edu.misztal.imageprocessing.image.plugins
+pl.edu.misztal.imageprocessing.image.utils
+pl.edu.misztal.imageprocessing.imagetools
+pl.edu.misztal.imageprocessing.plugins.color
+pl.edu.misztal.imageprocessing.plugins.convolve
+pl.edu.misztal.imageprocessing.plugins.resize
+pl.edu.misztal.imageprocessing.plugins.threshold
+pl.edu.misztal.imageprocessing.plugins.util
+pl.edu.misztal.imageprocessing.plugins.util.gui
+pl.edu.misztal.imageprocessing.test

@@ -1,4 +1,6 @@
-package pl.edu.misztal.imageprocessing.image.executors;
+package pl.edu.misztal.imageprocessing.image.executors.quick;
+
+import pl.edu.misztal.imageprocessing.image.executors.Executor;
 
 /**
  * executor in place - input is the same as output for each plugin
