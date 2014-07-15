@@ -44,6 +44,9 @@ Convolution (using convolve)
   - Emboss
   - ...
 
+Noise removal
+  - Medain filter
+
 Other
   - Resize
 

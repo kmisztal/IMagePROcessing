@@ -91,6 +91,14 @@ public class Image extends AbstractImage {
     public final int getRGB(final int x, final int y) {
         return image.getRGB(x, y);
     }
+    
+    public void setRGB(int x, int y, int i) {
+        image.setRGB(x, y, i);
+    }
+    
+    public void setRGB(int x, int y, int r, int g, int b) {
+        image.setRGB(x, y, new Color(r,g,b).getRGB());
+    }
 
     public final int getRed(final int x, final int y) {
         return MColor.RED.getColor(image.getRGB(x, y));
@@ -108,6 +116,14 @@ public class Image extends AbstractImage {
         if (checkX(x) && checkY(y)) {
             return image.getRGB(x, y);
         } else {
+            throw new RuntimeException("Position outside the image: [" + x + ";" + y + "]");
+        }
+    }
+    
+    public void setRGBSecure(int x, int y, int i) {
+        if (checkX(x) && checkY(y)) {
+            image.setRGB(x, y, i);
+        }else {
             throw new RuntimeException("Position outside the image: [" + x + ";" + y + "]");
         }
     }
@@ -153,4 +169,6 @@ public class Image extends AbstractImage {
         width = im.getWidth();
         height = im.getHeight();
     }
+
+
 }
