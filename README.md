@@ -44,11 +44,16 @@ Convolution (using convolve)
   - Emboss
   - ...
 
+Mathematical morphology
+  - Dilation
+  - Erosion
+
 Noise removal
   - Medain filter (also parallel implementation)
 
 Other
   - Resize
+  - Connected Component
 
 License
 ----
