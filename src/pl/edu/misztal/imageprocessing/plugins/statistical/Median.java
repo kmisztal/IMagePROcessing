@@ -30,30 +30,38 @@ import pl.edu.misztal.imageprocessing.image.utils.Mask;
  * @author Krzysztof
  */
 public class Median extends Plugin {
+    int maskSize = 3;
 
     @Override
     public void process(Image imgIn, Image imgOut, Attributes attrOut, Mask mask) {
-
-        final int maskSize = 3;
+        if(mask != null){
+            throw new RuntimeException("Not supproted yet");
+        }
+        
+        if(getAttribute("size") != null){
+            maskSize = (Integer) getAttribute("size");
+        }else{
+            setAttribute("size", maskSize);
+        }
+        
         final int width = imgIn.getWidth();
         final int height = imgIn.getHeight();
         final int outputPixels[] = new int[width * height];
 
-        int red[], green[], blue[];
+        int red[] = new int[maskSize * maskSize], 
+                green[] = new int[maskSize * maskSize], 
+                blue[] = new int[maskSize * maskSize];
         int xMin, xMax, yMin, yMax;
-
-        int argb, reD, greeN, bluE;
         
         int count;
 
+        
+        
         /**
          * Median Filter operation
          */
         for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                red = new int[maskSize * maskSize];
-                green = new int[maskSize * maskSize];
-                blue = new int[maskSize * maskSize];
+            for (int x = 0; x < width; x++) {                               
                 count = 0;
                 xMin = x - (maskSize / 2);
                 xMax = x + (maskSize / 2);
@@ -62,13 +70,10 @@ public class Median extends Plugin {
                 for (int r = yMin; r <= yMax; r++) {
                     for (int c = xMin; c <= xMax; c++) {
                         if (r >= 0 && r < height && c >= 0 && c < width) {
-                            argb = imgIn.getRGB(c, r);
-                            reD = (argb >> 16) & 0xff;
-                            red[count] = reD;
-                            greeN = (argb >> 8) & 0xff;
-                            green[count] = greeN;
-                            bluE = (argb) & 0xFF;
-                            blue[count] = bluE;
+                            final int argb = imgIn.getRGB(c, r);                            
+                            red[count] = (argb >> 16) & 0xff;
+                            green[count] = (argb >> 8) & 0xff;
+                            blue[count] = (argb) & 0xFF;
                             count++;
                         }
                     }
@@ -77,9 +82,9 @@ public class Median extends Plugin {
                 /**
                  * sort red, green, blue array
                  */
-                java.util.Arrays.sort(red);
-                java.util.Arrays.sort(green);
-                java.util.Arrays.sort(blue);
+                java.util.Arrays.sort(red, 0, count);
+                java.util.Arrays.sort(green, 0, count);
+                java.util.Arrays.sort(blue, 0, count);
 
                 /**
                  * save median value in outputPixels array
