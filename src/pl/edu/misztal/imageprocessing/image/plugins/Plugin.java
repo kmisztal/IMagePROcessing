@@ -41,6 +41,20 @@ public abstract class Plugin {
     ) {
         process(imgIn, imgOut, null, mask);
     }
+    
+    /**
+     * Executes the algorithm.
+     *
+     * @param imgIn	input image.
+     * @param imgOut	output image.
+     * @param mask
+     */
+    public final void process(
+            Image imgIn,
+            Mask mask
+    ) {
+        process(imgIn, imgIn, null, mask);
+    }
 
     /**
      * Executes the algorithm.

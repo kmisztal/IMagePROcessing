@@ -1,5 +1,7 @@
 package pl.edu.misztal.imageprocessing.image.utils;
 
+import java.awt.Color;
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -120,14 +122,26 @@ public class Attributes {
             String key = keySetIterator.next();
             ret += key + " : ";
             Object o = hashAttributes.get(key);
-            if(o instanceof Number){
+            if (o instanceof Number) {
                 ret += o + "\n";
-            }else{
-                throw new RuntimeException("Not supported type of attribute");
+            } else if (o instanceof Point) {
+                final Point p = (Point) o;
+                ret += "[" + p.getX() + ";" + p.getY() + "]\n";
+            } else if (o instanceof Color) {
+                ret += o + "\n";
+            } else if(o instanceof int[]) {
+                ret += Arrays.toString((int[])o);
+            } else if(o instanceof Mask){
+                ret += "Mask is set";
+            } else if (o instanceof int[][]) {
+                ret += "2D array";
+            } else {
+                throw new RuntimeException("Not supported type of attribute : " + key);
             }
         }
 
         return ret;
     }
+
 
 }

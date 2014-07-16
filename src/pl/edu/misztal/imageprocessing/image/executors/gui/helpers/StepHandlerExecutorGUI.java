@@ -41,8 +41,8 @@ public final class StepHandlerExecutorGUI extends JFrame {
     final JEditorPane info;
     final ResizableImagePanel imageView;
 
-    public StepHandlerExecutorGUI() {
-        super("Step Handler Executor");
+    public StepHandlerExecutorGUI(String title) {
+        super(title == null ? "Step Handler Executor" : title);
         LookAndFeel.doIt();
 
         gui = new JPanel(new GridLayout());
@@ -90,6 +90,10 @@ public final class StepHandlerExecutorGUI extends JFrame {
         setLocationByPlatform(true);
         pack();
         setSize(800, 600);
+    }
+
+    private StepHandlerExecutorGUI() {
+        this(null);
     }
 
     public Container getGui() {

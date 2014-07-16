@@ -45,7 +45,7 @@ Convolution (using convolve)
   - ...
 
 Noise removal
-  - Medain filter
+  - Medain filter (also parallel implementation)
 
 Other
   - Resize

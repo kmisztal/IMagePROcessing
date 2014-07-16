@@ -10,14 +10,20 @@ import pl.edu.misztal.imageprocessing.plugins.util.TimeExecution;
  * @author Krzysztof
  */
 public class StepHandlerExecutor extends Executor {
+    private String title;
 
     public StepHandlerExecutor(String filename) {
         super(filename);
     }
 
+    public StepHandlerExecutor(String filename, String title) {
+        super(filename);
+        this.title = title;
+    }
+
     @Override
     public void execute() {
-        StepHandlerExecutorGUI imageList = new StepHandlerExecutorGUI();
+        StepHandlerExecutorGUI imageList = new StepHandlerExecutorGUI(title);
         ProcessingProgress progress = new ProcessingProgress(imageList, plugins.size());
         imageList.setVisible(true);
 

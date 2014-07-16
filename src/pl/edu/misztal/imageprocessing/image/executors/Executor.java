@@ -44,7 +44,7 @@ public abstract class Executor {
     }
 
     public abstract void execute();
-
+    
     /**
      * invoke the save methods from Image class
      * @param filename - destination file name
@@ -76,5 +76,4 @@ public abstract class Executor {
     public int getLengthOfTask() {
         return plugins.size();
     }
-
 }
