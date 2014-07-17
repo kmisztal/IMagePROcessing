@@ -10,7 +10,7 @@ import pl.edu.misztal.imageprocessing.image.utils.Mask;
  *
  * @author Krzysztof
  */
-public class ConnectComponent extends Plugin{
+public class ConnectedComponent extends Plugin{
     
     private int[][] res;
 

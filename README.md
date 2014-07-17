@@ -3,15 +3,11 @@ IMage PROcessing
 
 It is a image processing library
 
-  - Type some Markdown text in the left window
-  - See the HTML in the right
-  - Magic
-
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site] [1]:
+  - Supprot for each plugin creating
+  - Easy parallelization (some of plugins are prepared with parallel implamentation)
+  - Executors (also with simple GUI)
 
 > Have fun :)
-
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.  
 
 Version
 ----
@@ -35,14 +31,13 @@ Color transform (based on LookUpTable)
   - Invert
   - Posterize
   - Threshold
+  - Multi level Otsu thresholding
   - Sepia
-  - ...
 
 Convolution (using convolve)
   - Blur
   - Sharpen
   - Emboss
-  - ...
 
 Mathematical morphology
   - Dilation
@@ -51,9 +46,13 @@ Mathematical morphology
 Noise removal
   - Medain filter (also parallel implementation)
 
+Noise generators
+  - Salt and Peper
+
 Other
   - Resize
   - Connected Component
+  - FloodFill
 
 License
 ----

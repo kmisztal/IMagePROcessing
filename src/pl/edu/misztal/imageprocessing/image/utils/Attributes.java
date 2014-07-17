@@ -132,9 +132,9 @@ public class Attributes {
             } else if(o instanceof int[]) {
                 ret += Arrays.toString((int[])o);
             } else if(o instanceof Mask){
-                ret += "Mask is set";
+                ret += "Mask is set\n";
             } else if (o instanceof int[][]) {
-                ret += "2D array";
+                ret += "2D array\n";
             } else {
                 throw new RuntimeException("Not supported type of attribute : " + key);
             }
