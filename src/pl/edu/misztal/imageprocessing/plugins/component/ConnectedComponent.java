@@ -10,8 +10,8 @@ import pl.edu.misztal.imageprocessing.image.utils.Mask;
  *
  * @author Krzysztof
  */
-public class ConnectedComponent extends Plugin{
-    
+public class ConnectedComponent extends Plugin {
+
     private int[][] res;
 
     @Override
@@ -147,7 +147,6 @@ public class ConnectedComponent extends Plugin{
         }
 
 //        System.out.println(next_label + " regions");
-
         return rst;
     }
 
@@ -181,5 +180,5 @@ public class ConnectedComponent extends Plugin{
         }
         return label[x];
     }
-    
+
 }

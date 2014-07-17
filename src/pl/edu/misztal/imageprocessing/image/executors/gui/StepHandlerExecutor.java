@@ -11,6 +11,8 @@ import pl.edu.misztal.imageprocessing.plugins.util.TimeExecution;
  */
 public class StepHandlerExecutor extends Executor {
     private String title;
+    private StepHandlerExecutorGUI imageList;
+    private ProcessingProgress progress;
 
     public StepHandlerExecutor(String filename) {
         super(filename);
@@ -22,14 +24,17 @@ public class StepHandlerExecutor extends Executor {
     }
 
     @Override
-    public void execute() {
-        StepHandlerExecutorGUI imageList = new StepHandlerExecutorGUI(title);
-        ProcessingProgress progress = new ProcessingProgress(imageList, plugins.size());
-        imageList.setVisible(true);
+    public void executeCase() {
+        if(imageList == null){
+            imageList = new StepHandlerExecutorGUI(title);
+            progress = new ProcessingProgress(imageList, getPlugins().size());
+            imageList.setVisible(true);
+        }
+        
 
         TimeExecution te = new TimeExecution();
         te.startEvent();
-        plugins.stream().forEach((p) -> {
+        getPlugins().stream().forEach((p) -> {
             te.startJob(p.getName());
             
             p.process(currentImage);

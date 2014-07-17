@@ -1,7 +1,6 @@
 package pl.edu.misztal.imageprocessing.image.executors.gui;
 
 import pl.edu.misztal.imageprocessing.image.executors.Executor;
-import pl.edu.misztal.imageprocessing.image.executors.gui.helpers.StepHandlerExecutorGUI;
 import pl.edu.misztal.imageprocessing.image.executors.progressbar.ProcessingProgress;
 
 /**
@@ -15,14 +14,13 @@ public class StepHandlerExecutorWithProgressBar extends Executor {
     }
 
     @Override
-    public void execute() {
-        ProcessingProgress progress = new ProcessingProgress(null, plugins.size());
+    public void executeCase() {
+        ProcessingProgress progress = new ProcessingProgress(null, getPlugins().size());
 
-        plugins.stream().forEach((p) -> {
+        getPlugins().stream().forEach((p) -> {
             p.process(currentImage);
             progress.increment();            
         });
-
     }
 
 }

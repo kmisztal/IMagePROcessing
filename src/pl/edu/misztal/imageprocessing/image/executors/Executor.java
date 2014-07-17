@@ -1,6 +1,7 @@
 package pl.edu.misztal.imageprocessing.image.executors;
 
 import java.util.ArrayList;
+import java.util.List;
 import pl.edu.misztal.imageprocessing.image.Image;
 import pl.edu.misztal.imageprocessing.image.plugins.Plugin;
 
@@ -12,8 +13,9 @@ public abstract class Executor {
 
     protected final Image originalImage;
     protected Image currentImage;
+    protected int currentPlugin = 0;
 
-    protected ArrayList<Plugin> plugins = new ArrayList<>();
+    private ArrayList<Plugin> plugins = new ArrayList<>();
 
     public Executor(String filename) {
         originalImage = new Image(filename);
@@ -43,7 +45,12 @@ public abstract class Executor {
         plugins.add(plugin);
     }
 
-    public abstract void execute();
+    public abstract void executeCase();
+    
+    public final void execute(){
+        executeCase();
+        currentPlugin = plugins.size();
+    }
     
     /**
      * invoke the save methods from Image class
@@ -76,4 +83,10 @@ public abstract class Executor {
     public int getLengthOfTask() {
         return plugins.size();
     }
+
+    public List<Plugin> getPlugins() {        
+        return plugins.subList(currentPlugin, plugins.size());
+    }
+    
+    
 }

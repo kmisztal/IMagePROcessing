@@ -34,6 +34,10 @@ public class StepHandlerExecutorWithProgressBarTest {
         
         exec.execute();
         
+        exec.add(new Invert());
+        
+        exec.execute();
+        
         exec.save("./res/out.png");
     }
 }
